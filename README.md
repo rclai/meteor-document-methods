@@ -6,11 +6,15 @@ This uses ```dburles:collection-helpers``` to get the job done. All of these met
 
 Instead of writing: 
 
-```MyCollection.update(this._id, { $set: { a: 1 } });```
+```
+MyCollection.update(this._id, { $set: { a: 1 } });
+```
 
 Now you can write:
 
-```this.set({ a: 1 })```
+```
+this.set({ a: 1 })
+```
 
 Where ```this``` is a document that was ```findOne```'d.
 
@@ -18,11 +22,13 @@ There's more stuff you can do, see below.
 
 ## Installation
 
-```meteor add lai:document-methods```
+```
+meteor add lai:document-methods
+```
 
 ##Examples
 
-```javascript
+```js
 Stuff = new Mongo.Collection('stuff');
 
 var thing = Stuff.findOne();
@@ -93,29 +99,51 @@ For the remove callback, if present, called with an error object as its argument
 If no callbacks were provided, they should function exactly as an insert, update, remove as specified in the Meteor documentation (insert will return the _id, update will return 1, remove will remove nothing, etc).
 
 ####document.$update(modifier [, callback])
+
 Mimics ```MyCollection.update(this._id, modifier)```.
+
 ####document.$save([callback])
+
 Updates the current document with its current properties.
+
 ####document.$duplicate([callback])
+
 Does an insert of the document, returns _id if no callback was provided, otherwise, it's returned in the second argument of the callback.
+
 ####document.$remove([callback])
+
 Mimics ```MyCollection.remove(this._id)```
+
 ####document.$set(propertiesToSet [, callback])
+
 Mimics ```MyCollection.update(this._id, { $set: { prop1: 1, prop2: 2 } })```
+
 ####document.$addToSet(setToAdd [, callback])
+
 Mimics ```MyCollection.update(this._id, { $addToSet: { mySetOfThings: { a: 1, b: 2 } } })```
+
 ####document.$push(thingsToPush [, callback])
+
 Mimics ```MyCollection.update(this._id, { $push: { myList: 1 } })```
+
 ####document.$pushAll(allThingsToPush [, callback])
+
 Mimics ```MyCollection.update(this._id, { $pushAll: { myList: [1, 2, 3, 4] } })```
+
 ####document.$pull(thingToPull [, callback])
+
 Mimics ```MyCollection.update(this._id, { $pull: { myList: 1 } })```
+
 ####document.$pullAll(allThingsToPull [, callback])
+
 Mimics ```MyCollection.update(this._id, { $pullAll: { myList: [1, 2, 3, 4] } })```
+
 ####document.$pop(thingToPop [, callback])
+
 Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 
 ##Now What?
+
 I need to do tests, and I need your feedback.
 
 Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix. Let me know your thoughts.

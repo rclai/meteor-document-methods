@@ -15,7 +15,7 @@ MyCollection.update(this._id, { $set: { a: 1 } });
 Now you can write:
 
 ```
-this.set({ a: 1 })
+this.$set({ a: 1 })
 ```
 
 Where ```this``` is a document that was ```findOne```'d.

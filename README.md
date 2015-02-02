@@ -111,6 +111,6 @@ Mimics ```MyCollection.update(this._id, { $pullAll: { myList: [1, 2, 3, 4] } })`
 Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 
 ##Now What?
-I need to do tests, and feedback.
+I need to do tests, and I need your feedback.
 
-Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix.
+Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix. Let me know your thoughts.

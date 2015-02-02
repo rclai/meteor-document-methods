@@ -68,11 +68,16 @@ thing.$update({
 });
 
 // If you wanted to create a duplicate of this document
-thing.$duplicate();
+var newThing, newThingId = thing.$duplicate();
+if (newThingId) {
+  newThing = Stuff.findOne(newThingId);
+  // do new things with this newThing
+}
 
 // And once you've realized that you created a 
 // completely meaningless document, you can remove it
 thing.$remove();
+newThing.$remove();
 ```
 
 ## API

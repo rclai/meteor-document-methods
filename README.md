@@ -153,3 +153,11 @@ Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 I need to do tests, and I need your feedback.
 
 Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix. Let me know your thoughts.
+
+##Thoughts
+
+I guess it is obvious that you shouldn't use this in Blaze even though you can, and perhaps you're thinking that collection helpers are supposed to be only used for Blaze!
+
+But this brings up a discussion of:
+
+Shouldn't documents have a nice API to manupulate them, at least at the individual document level?

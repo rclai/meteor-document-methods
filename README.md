@@ -112,3 +112,5 @@ Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 
 ##Now What?
 I need to do tests, and feedback.
+
+Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix.

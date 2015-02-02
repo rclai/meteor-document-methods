@@ -22,7 +22,11 @@ Where ```this``` is a document that was ```findOne```'d.
 
 There's more stuff you can do, see below.
 
-## Installation
+##Note
+
+If you have certain collection definitions with transforms applied to them by other means other than collection helpers (i.e CollectionFS), then those collections won't have these methods.
+
+##Installation
 
 ```
 meteor add lai:document-methods

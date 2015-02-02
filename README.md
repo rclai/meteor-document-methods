@@ -118,6 +118,10 @@ Mimics ```MyCollection.remove(this._id)```
 
 Mimics ```MyCollection.update(this._id, { $set: { prop1: 1, prop2: 2 } })```
 
+####document.$unset(propertiesToUnset [, callback])
+
+Mimics ```MyCollection.update(this._id, { $unset: { prop1: '' } })```
+
 ####document.$addToSet(setToAdd [, callback])
 
 Mimics ```MyCollection.update(this._id, { $addToSet: { mySetOfThings: { a: 1, b: 2 } } })```

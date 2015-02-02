@@ -29,6 +29,9 @@ Meteor.startup(function () {
       $set: function (toSet) {
         return inst.update.apply(inst, _.flatten([this._id, { $set: toSet }, _.rest(_.toArray(arguments))]));
       },
+      $unset: function (toSet) {
+        return inst.update.apply(inst, _.flatten([this._id, { $unset: toSet }, _.rest(_.toArray(arguments))]));
+      },
       $push: function (toPush) {
         return inst.update.apply(inst, _.flatten([this._id, { $push: toPush }, _.rest(_.toArray(arguments))]));
       },

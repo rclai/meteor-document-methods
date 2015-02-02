@@ -21,7 +21,7 @@ Meteor.startup(function () {
         return inst.insert.apply(inst, _.flatten([doc], _.toArray(arguments)));
       },
       $update: function (modifier) {
-        return inst.update.apply(inst, _.flatten([this._id], modifier, _.rest(_.toArray(arguments))));
+        return inst.update.apply(inst, _.flatten([this._id, modifier, _.rest(_.toArray(arguments))]));
       },
       $remove: function () {
         return inst.remove.apply(inst, _.flatten([this._id, _.toArray(arguments)]));

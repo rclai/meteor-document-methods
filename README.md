@@ -50,13 +50,15 @@ thing.anotherOne = 'yea!';
 thing.$save();
 
 // The following methods mimic the Mongo functions of $push, $pushAll, 
-// $addToSet, $pull, $pullAll, and $pop (Note: they will apply the update immediately)
+// $unset, $addToSet, $pull, $pullAll, and $pop
+// (Note: they will apply the update immediately)
 thing.$push({ myArrayProperty: 1 });
 thing.$pushAll({ myArrayProperty: [2, 3, 4, 5] });
 thing.$addToSet({ myPropertySet: { a: 1, b: 2, c: 3} });
 thing.$pull({ myArrayProperty: 2 });
 thing.$pullAll({ myArrayProperty: [1, 3, 4] });
 thing.$pop({ myArrayProperty: 1 });
+thing.$unset({ myArrayProperty: '' });
 
 // If you think this is too limiting, you can have full control of the modifier, 
 // but only on the modifier and not the criteria because remember, 
@@ -160,4 +162,4 @@ I guess it is obvious that you shouldn't use this in Blaze even though you can, 
 
 But this brings up a discussion of:
 
-Shouldn't documents have a nice API to manupulate them, at least at the individual document level?
+Shouldn't documents have a nice API to manipulate them, at least at the individual document level?

@@ -1,4 +1,4 @@
-##Meteor Document Methods
+## Meteor Document Methods
 
 Adds helpful methods to each of your documents to easily update/duplicate/remove them.
 
@@ -18,21 +18,21 @@ Where ```this``` is a document that was ```findOne```'d.
 
 There's more stuff you can do, see below.
 
-##Installation
+## Installation
 
 ```
 meteor add lai:document-methods
 ```
 
-##Note
+## Note
 
-###This is currently alpha!
+### This is currently alpha!
 
 If you have certain collection definitions with transforms applied to them by other means other than collection helpers (i.e CollectionFS), then those collections won't have these methods.
 
 This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers, using ```dburles:mongo-collection-instances```. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!
 
-##Examples
+## Examples
 
 ```js
 Stuff = new Mongo.Collection('stuff');
@@ -106,67 +106,67 @@ For the remove callback, if present, called with an error object as its argument
 
 If no callbacks were provided, they should function exactly as an insert, update, remove as specified in the Meteor documentation (insert will return the _id, update will return 1, remove will remove nothing, etc).
 
-####document.$update(modifier [, callback])
+#### document.$update(modifier [, callback])
 
 Mimics ```MyCollection.update(this._id, modifier)```.
 
-####document.$save([callback])
+#### document.$save([callback])
 
 Updates the current document with its current properties.
 
-####document.$duplicate([callback])
+#### document.$duplicate([callback])
 
 Does an insert of the document, returns _id if no callback was provided, otherwise, it's returned in the second argument of the callback.
 
-####document.$remove([callback])
+#### document.$remove([callback])
 
 Mimics ```MyCollection.remove(this._id)```
 
-####document.$set(propertiesToSet [, callback])
+#### document.$set(propertiesToSet [, callback])
 
 Mimics ```MyCollection.update(this._id, { $set: { prop1: 1, prop2: 2 } })```
 
-####document.$unset(propertiesToUnset [, callback])
+#### document.$unset(propertiesToUnset [, callback])
 
 Mimics ```MyCollection.update(this._id, { $unset: { prop1: '' } })```
 
-####document.$addToSet(setToAdd [, callback])
+#### document.$addToSet(setToAdd [, callback])
 
 Mimics ```MyCollection.update(this._id, { $addToSet: { mySetOfThings: { a: 1, b: 2 } } })```
 
-####document.$push(thingsToPush [, callback])
+#### document.$push(thingsToPush [, callback])
 
 Mimics ```MyCollection.update(this._id, { $push: { myList: 1 } })```
 
-####document.$pushAll(allThingsToPush [, callback])
+#### document.$pushAll(allThingsToPush [, callback])
 
 Mimics ```MyCollection.update(this._id, { $pushAll: { myList: [1, 2, 3, 4] } })```
 
-####document.$pull(thingToPull [, callback])
+#### document.$pull(thingToPull [, callback])
 
 Mimics ```MyCollection.update(this._id, { $pull: { myList: 1 } })```
 
-####document.$pullAll(allThingsToPull [, callback])
+#### document.$pullAll(allThingsToPull [, callback])
 
 Mimics ```MyCollection.update(this._id, { $pullAll: { myList: [1, 2, 3, 4] } })```
 
-####document.$pop(thingToPop [, callback])
+#### document.$pop(thingToPop [, callback])
 
 Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 
-##FAQs
+## FAQs
 
-####Won't this override my collection helpers?
+#### Won't this override my collection helpers?
 
 No it doesn't, these helpers will be added alongside your current collection helpers, just make sure don't have collection helpers that have the same name as these methods.
 
-##Now What?
+## Now What?
 
 I need to do tests, and I need your feedback.
 
 Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix. Let me know your thoughts.
 
-##Thoughts
+## Thoughts
 
 I guess it is obvious that you shouldn't use this in Blaze even though you can, and perhaps you're thinking that collection helpers are supposed to be only used for Blaze!
 

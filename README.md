@@ -1,10 +1,6 @@
 ##Meteor Document Methods
 
-###This is currently alpha!
-
 Adds helpful methods to each of your documents to easily update/duplicate/remove them.
-
-This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers, using ```dburles:mongo-collection-instances```. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!
 
 Instead of writing: 
 
@@ -22,15 +18,19 @@ Where ```this``` is a document that was ```findOne```'d.
 
 There's more stuff you can do, see below.
 
-##Note
-
-If you have certain collection definitions with transforms applied to them by other means other than collection helpers (i.e CollectionFS), then those collections won't have these methods.
-
 ##Installation
 
 ```
 meteor add lai:document-methods
 ```
+
+##Note
+
+###This is currently alpha!
+
+If you have certain collection definitions with transforms applied to them by other means other than collection helpers (i.e CollectionFS), then those collections won't have these methods.
+
+This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers, using ```dburles:mongo-collection-instances```. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!
 
 ##Examples
 

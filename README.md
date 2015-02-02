@@ -4,7 +4,17 @@ Adds helpful methods to each of your documents to easily update/duplicate/remove
 
 This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers, using ```dburles:mongo-collection-instances```. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!
 
-Essentially all these methods allow you to not have to write ```MyCollection.update(this._id, { $set: { a: 1 } });``` and just lets you write ```this.set({ a: 1 })``` where ```this``` is a document that was ```findOne```'d.
+Instead of writing: 
+
+```MyCollection.update(this._id, { $set: { a: 1 } });```
+
+Now you can write:
+
+```this.set({ a: 1 })```
+
+Where ```this``` is a document that was ```findOne```'d.
+
+There's more stuff you can do, see below.
 
 ## Installation
 

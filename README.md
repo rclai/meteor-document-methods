@@ -150,6 +150,12 @@ Mimics ```MyCollection.update(this._id, { $pullAll: { myList: [1, 2, 3, 4] } })`
 
 Mimics ```MyCollection.update(this._id, { $pop: { myList: 1 } })```
 
+##FAQs
+
+####Won't this override my collection helpers?
+
+No it doesn't, these helpers will be added alongside your current collection helpers, just make sure don't have collection helpers that have the same name as these methods.
+
 ##Now What?
 
 I need to do tests, and I need your feedback.

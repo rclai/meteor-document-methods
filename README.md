@@ -1,5 +1,7 @@
 ##Meteor Document Methods
 
+###This is currently alpha!
+
 Adds helpful methods to each of your documents to easily update/duplicate/remove them.
 
 This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers, using ```dburles:mongo-collection-instances```. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!

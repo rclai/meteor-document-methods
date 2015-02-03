@@ -26,8 +26,6 @@ meteor add lai:document-methods
 
 ## Note
 
-### This is currently alpha!
-
 If you have certain collection definitions with transforms applied to them by other means other than collection helpers (i.e CollectionFS), then those collections won't have these methods.
 
 This uses ```dburles:collection-helpers``` to get the job done. All of these methods are injected to all of your collections as collection helpers. Thanks __@dburles__ for your packages, without them this would not be possible, or rather, it would've made this super hard to make!
@@ -213,7 +211,7 @@ No it doesn't, these helpers will be added alongside your current collection hel
 
 ## Now What?
 
-I need to do tests, and I need your feedback.
+I wrote some tests but I would love your feedback and for you guys to test it out as well.
 
 Also, when I created this, I had intially named them without the ```$``` prefix, but then I figured that you might run into name conflicts and that's why I decided to add the ```$``` prefix. Let me know your thoughts.
 

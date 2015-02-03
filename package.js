@@ -1,6 +1,6 @@
 Package.describe({
   name: 'lai:document-methods',
-  version: '0.0.6',
+  version: '0.0.7',
   // Brief, one-line summary of the package.
   summary: 'Extend your documents with helpful methods.',
   // URL to the Git repository containing the source code for this package.
@@ -30,11 +30,14 @@ Package.onTest(function(api) {
     'tracker',
     'mongo',
     'underscore',
-    'aldeed:collection2',
-    'matb33:collection-hooks',
-    'cfs:standard-packages',
-    'cfs:gridfs'
+    'aldeed:collection2@2.3.1',
+    'matb33:collection-hooks@0.7.9',
+    'cfs:standard-packages@0.5.3',
+    'cfs:gridfs@0.0.2'
   ]);
   api.use('lai:document-methods');
-  api.addFiles('document-methods-tests.js');
+  api.addFiles([
+    'tests/functions.js',
+    'tests/tests.js'
+  ]);
 });

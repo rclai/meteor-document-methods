@@ -29,7 +29,11 @@ Package.onTest(function(api) {
     'tinytest',
     'tracker',
     'mongo',
-    'underscore'
+    'underscore',
+    'aldeed:collection2',
+    'matb33:collection-hooks',
+    'cfs:standard-packages',
+    'cfs:gridfs'
   ]);
   api.use('lai:document-methods');
   api.addFiles('document-methods-tests.js');

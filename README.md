@@ -94,6 +94,57 @@ thing.$remove();
 newThing.$remove();
 ```
 
+## A more practical example
+
+```js
+// app.js
+Todos = new Mongo.Collection('todos');
+
+if (Meteor.isClient) {
+  Template.todos.helpers({
+    todos: function () {
+      return Todos.find();
+    },
+    checked: function () {
+      return this.done ? 'checked' : '';
+    }
+  });
+  Template.todos.events({
+    'change .todo-chk': function (event, template) {
+      this.$set({ done: !this.done });
+    },
+    'submit .add-tag': function (event, template) {
+      var tag = $.trim($(e.target).find('.tag-input').val());
+      tag && this.$addToSet({ tags: tag });
+    },
+    'click .duplicate': function (event, template) {
+      // You can change the properties before duplicating it too!
+      this.title = this.title.concat(' - new title');
+      this.$duplicate();
+    },
+    'click .delete': function (event, template) {
+      this.$remove();
+    }
+  });
+}
+```
+
+```html
+<template name="todos">
+  {{#each todos}}
+    <div class="todo">
+      <input type="checkbox" class="todo-chk" {{checked}}>
+      {{title}} - <button class="duplicate">duplicate</button> - <button class="delete">delete</button>
+      <br>
+      <form class="add-tag">
+        <input type="text" class="tag-input"> <button>Add</button>
+      </form>
+    </div>
+    <hr>
+  {{/each}}
+</template>
+```
+
 ## API
 
 Where ```document``` is a document that was ```findOne```'d.

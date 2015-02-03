@@ -18,7 +18,6 @@ Package.onUse(function(api) {
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
     'mongo',
-    'dburles:mongo-collection-instances@0.3.1',
     'dburles:collection-helpers@1.0.2'
   ]);
 

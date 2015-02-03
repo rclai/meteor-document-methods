@@ -1,4 +1,4 @@
-## Meteor Document Methods
+## Mongo Document Methods
 
 Adds helpful methods to each of your documents to easily update/duplicate/remove them.
 

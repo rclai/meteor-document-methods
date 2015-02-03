@@ -1,4 +1,23 @@
+if (typeof Object.create !== 'function') {
+  Object.create = (function () {
+    var Temp = function () {};
+    return function (prototype) {
+      if (arguments.length > 1) {
+        throw Error('Second argument not supported');
+      }
+      if (typeof prototype != 'object') {
+        throw TypeError('Argument must be an object');
+      }
+      Temp.prototype = prototype;
+      var result = new Temp();
+      Temp.prototype = null;
+      return result;
+    };
+  })();
+}
+
 var attachDocumentMethods = function (inst) {
+  //console.log('inst', inst);
   if ((!_.isFunction(inst._transform) || inst._hasCollectionHelpers) && _.isFunction(inst.helpers)) {
     inst.helpers({
       $save: function () {
@@ -53,31 +72,22 @@ var attachDocumentMethods = function (inst) {
   }
 };
 
-var wrapCollection = function (ns, as) {
-  if (!as._CollectionConstructor) as._CollectionConstructor = as.Collection;
-  if (!as._CollectionPrototype) as._CollectionPrototype = new as.Collection(null);
+var wrapConstructor = function () {
+  var constructor = Mongo.Collection;
 
-  var constructor = as._CollectionConstructor;
-  var proto = as._CollectionPrototype;
-
-  ns.Collection = function () {
+  Mongo.Collection = function() {
     var ret = constructor.apply(this, arguments);
     attachDocumentMethods(this);
     return ret;
   };
 
-  ns.Collection.prototype = proto;
+  Mongo.Collection.prototype = Object.create(constructor.prototype);
+  Mongo.Collection.prototype.constructor = Mongo.Collection;
 
-  for (var prop in constructor) {
-    if (constructor.hasOwnProperty(prop)) {
-      ns.Collection[prop] = constructor[prop];
-    }
-  }
+  _.extend(Mongo.Collection, constructor);
+
+  // Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
+  Meteor.Collection = Mongo.Collection;
 };
 
-if (typeof Mongo !== "undefined") {
-  wrapCollection(Meteor, Mongo);
-  wrapCollection(Mongo, Mongo);
-} else {
-  wrapCollection(Meteor, Meteor);
-}
+wrapConstructor();

@@ -91,3 +91,5 @@ var wrapConstructor = function () {
 };
 
 wrapConstructor();
+
+attachDocumentMethods(Meteor.users);

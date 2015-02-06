@@ -13,7 +13,11 @@ Package.describe({
 Package.onUse(function(api) {
 
   api.versionsFrom('0.9.1');
-
+  
+  api.use([
+    'accounts-base'
+  ], { weak: true });
+  
   api.use([
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
@@ -26,6 +30,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use([
+    'accounts-base',
     'tinytest',
     'tracker',
     'mongo',

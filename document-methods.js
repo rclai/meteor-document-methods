@@ -92,6 +92,6 @@ var wrapConstructor = function () {
 
 wrapConstructor();
 
-if (typeof Meteor.users !== undefined) {
+if (typeof Meteor.users !== 'undefined') {
   attachDocumentMethods(Meteor.users);
 }

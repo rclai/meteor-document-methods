@@ -6,6 +6,12 @@ insert = function (collection) {
       user: 'lindsey',
       assignedOn: new Date('1/1/2014')
     }],
+    some: {
+      weirdly: 'nested object',
+      that: 'I uncreatively',
+      came: 'up with because',
+      iwas: 'running out of creativity'
+    },
     tags: ['critical', 'yum'],
     done: false
   });

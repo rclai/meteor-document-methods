@@ -102,6 +102,12 @@ Tinytest.add("all methods", function (test) {
     assignedOn: new Date('1/1/2014')
   }];
   todo.tags = ['critical', 'yum', 'awesome'];
+  todo.some.weirdly = 'odd object',
+  todo.some.that = {
+    now: 'has another',
+    nested: 'object',
+    whoa: 'yo'
+  };
   todo.$save();
   
   todo = inst(Todos);
@@ -116,6 +122,12 @@ Tinytest.add("all methods", function (test) {
     assignedOn: new Date('1/1/2014')
   }]);
   test.equal(todo.tags, ['critical', 'yum', 'awesome']);
+  test.equal(todo.some.weirdly, 'odd object');
+  test.equal(todo.some.that.now, 'has another');
+  test.equal(todo.some.that.nested, 'object');
+  test.equal(todo.some.that.whoa, 'yo');
+  test.equal(todo.some.came, 'up with because');
+  test.equal(todo.some.iwas, 'running out of creativity');
 
   // Test $update
   todo.$update({
@@ -164,7 +176,31 @@ Tinytest.add("all methods", function (test) {
   todo = inst(Todos);
 
   test.equal(todo.blah, [1]);
+
+  // Test $push
+  todo.$push({
+    tags: 'what the'
+  });
+
+  todo = inst(Todos);
+
+  test.equal(todo.tags, ['critical', 'yum', 'what the']);
   
+  // Test $addToSet
+  todo.$addToSet({
+    tags: {
+      some: 'weird',
+      tag: '!'
+    }
+  });
+
+  todo = inst(Todos);
+
+  test.equal(todo.tags, ['critical', 'yum', 'what the', {
+    some: 'weird',
+    tag: '!'
+  }]);
+
   // Test $unset
   todo.$unset({
     blah: '1'
@@ -182,6 +218,18 @@ Tinytest.add("all methods", function (test) {
   todo = inst(Todos);
 
   test.equal(todo.blah, [1, 2, 3, 4]);
+
+  // Test $pullAll
+  todo.$pullAll({
+    tags: ['critical', 'yum', 'what the']
+  });
+
+  todo = inst(Todos);
+
+  test.equal(todo.tags, [{
+    some: 'weird',
+    tag: '!'
+  }]);
 
   // Test $remove
   todo.$remove();

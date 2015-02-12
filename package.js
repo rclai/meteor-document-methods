@@ -16,9 +16,9 @@ Package.onUse(function(api) {
   
   api.use([
     'accounts-base',
-    'matb33:collection-hooks',
-    'cfs:standard-packages',
-    'aldeed:collection2'
+    'matb33:collection-hooks@0.7.9',
+    'cfs:standard-packages@0.5.3',
+    'aldeed:collection2@2.3.1'
   ], { weak: true });
   
   api.use([

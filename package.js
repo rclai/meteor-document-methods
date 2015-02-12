@@ -1,6 +1,6 @@
 Package.describe({
   name: 'lai:document-methods',
-  version: '0.0.9',
+  version: '0.1.0',
   // Brief, one-line summary of the package.
   summary: 'Extend your documents with helpful methods.',
   // URL to the Git repository containing the source code for this package.
@@ -15,14 +15,17 @@ Package.onUse(function(api) {
   api.versionsFrom('0.9.1');
   
   api.use([
-    'accounts-base'
+    'accounts-base',
+    'matb33:collection-hooks',
+    'cfs:standard-packages',
+    'aldeed:collection2'
   ], { weak: true });
   
   api.use([
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
-    'mongo',
-    'dburles:collection-helpers@1.0.2'
+    'dburles:collection-helpers@1.0.2',
+    'mongo'
   ]);
 
   api.addFiles('document-methods.js');

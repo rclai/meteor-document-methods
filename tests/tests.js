@@ -66,8 +66,8 @@ Tinytest.add("works alongside collection-hooks@0.7.9", function (test) {
 Tinytest.add("works alongside cfs:standard-packages@0.5.3 with gridfs", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
   
-  Images = new FS.Collection("images", {
-    stores: [new FS.Store.GridFS("images")]
+  Images = new FS.Collection("images" + test.id, {
+    stores: [new FS.Store.GridFS("images" + test.id)]
   });
 
   insert(Todos);

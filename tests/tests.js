@@ -21,7 +21,7 @@ Tinytest.add("does not override your collection helpers", function (test) {
   test.equal(todo.sayHello(), 'hello');
 });
 
-Tinytest.add("works alongside collection2@2.3.1", function (test) {
+Tinytest.add("works alongside collection2@2.3.2", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
 
   Todos.attachSchema(new SimpleSchema({

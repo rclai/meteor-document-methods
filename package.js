@@ -31,7 +31,7 @@ Package.onTest(function(api) {
     'tracker',
     'mongo',
     'underscore',
-    'aldeed:collection2@2.3.1',
+    'aldeed:collection2@2.3.2',
     'matb33:collection-hooks@0.7.9',
     'cfs:standard-packages@0.5.3',
     'cfs:gridfs@0.0.2'

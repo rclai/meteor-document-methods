@@ -15,13 +15,6 @@ Package.onUse(function(api) {
   api.versionsFrom('0.9.1');
   
   api.use([
-    'accounts-base',
-    'matb33:collection-hooks@0.7.9',
-    'cfs:standard-packages@0.5.3',
-    'aldeed:collection2@2.3.1'
-  ], { weak: true });
-  
-  api.use([
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
     'dburles:collection-helpers@1.0.2',

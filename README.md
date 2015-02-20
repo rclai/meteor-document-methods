@@ -112,7 +112,8 @@ if (Meteor.isClient) {
       this.$set({ done: !this.done });
     },
     'submit .add-tag': function (event, template) {
-      var tag = $.trim($(e.target).find('.tag-input').val());
+      event.preventDefault();
+      var tag = $.trim($(event.target).find('.tag-input').val());
       tag && this.$addToSet({ tags: tag });
     },
     'click .duplicate': function (event, template) {
@@ -133,6 +134,12 @@ if (Meteor.isClient) {
     <div class="todo">
       <input type="checkbox" class="todo-chk" {{checked}}>
       {{title}} - <button class="duplicate">duplicate</button> - <button class="delete">delete</button>
+      <br>
+      Tags:
+      <br>
+      {{#each tags}}
+        {{.}}
+      {{/each}}
       <br>
       <form class="add-tag">
         <input type="text" class="tag-input"> <button>Add</button>

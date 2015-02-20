@@ -229,3 +229,7 @@ I guess it is obvious that you shouldn't use this in Blaze even though you can, 
 But this brings up a discussion of:
 
 Shouldn't documents have a nice API to manipulate them, at least at the individual document level?
+
+## License
+
+MIT

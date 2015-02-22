@@ -17,7 +17,6 @@ if (typeof Object.create !== 'function') {
 }
 
 var attachDocumentMethods = function (inst) {
-  //console.log('inst', inst);
   if ((!_.isFunction(inst._transform) || inst._hasCollectionHelpers) && _.isFunction(inst.helpers)) {
     inst.helpers({
       $save: function () {

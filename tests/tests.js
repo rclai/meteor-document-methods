@@ -21,7 +21,44 @@ Tinytest.add("does not override your collection helpers", function (test) {
   test.equal(todo.sayHello(), 'hello');
 });
 
-Tinytest.add("works alongside collection2@2.3.2", function (test) {
+Tinytest.add("works alongside dburles:mongo-collection-instances", function (test) {
+  Todos = new Mongo.Collection('todos' + test.id);
+  
+  var todosInstance = Mongo.Collection.get('todos' + test.id);
+
+  test.instanceOf(todosInstance, Mongo.Collection);
+
+  insert(Todos);
+
+  var todo = inst(Todos);
+  todo.$update({
+    $set: {
+      title: 'Pick up more stuff'
+    }
+  });
+
+  todo = inst(Todos);
+  test.equal(todo.title, 'Pick up more stuff');
+});
+
+Tinytest.add("works alongside ongoworks:security", function (test) {
+  Todos = new Mongo.Collection('todos' + test.id);
+
+
+  insert(Todos);
+
+  var todo = inst(Todos);
+  todo.$update({
+    $set: {
+      title: 'Pick up more stuff'
+    }
+  });
+
+  todo = inst(Todos);
+  test.equal(todo.title, 'Pick up more stuff');
+});
+
+Tinytest.add("works alongside aldeed:collection2", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
 
   Todos.attachSchema(new SimpleSchema({
@@ -43,7 +80,7 @@ Tinytest.add("works alongside collection2@2.3.2", function (test) {
   test.equal(todo.title, 'Pick up more stuff');
 });
 
-Tinytest.add("works alongside collection-hooks@0.7.9", function (test) {
+Tinytest.add("works alongside matb33:collection-hooks", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
   
   Todos.after.update(function () {
@@ -63,7 +100,7 @@ Tinytest.add("works alongside collection-hooks@0.7.9", function (test) {
   test.equal(todo.title, 'Pick up more stuff');
 });
 
-Tinytest.add("works alongside cfs:standard-packages@0.5.3 with gridfs", function (test) {
+Tinytest.add("works alongside cfs:standard-packages + cfs:gridfs", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
   
   Images = new FS.Collection("images" + test.id, {

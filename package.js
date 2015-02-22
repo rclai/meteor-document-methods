@@ -12,16 +12,18 @@ Package.describe({
 
 Package.onUse(function(api) {
 
-  api.versionsFrom('0.9.1');
+  api.versionsFrom('0.9.3');
   
   api.use([
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
-    'dburles:collection-helpers@1.0.2',
-    'mongo'
+    'mongo',
+    'dburles:collection-helpers@1.0.2'
   ]);
 
-  api.addFiles('document-methods.js');
+  api.addFiles([
+    'document-methods.js'
+  ]);
 });
 
 Package.onTest(function(api) {
@@ -31,10 +33,12 @@ Package.onTest(function(api) {
     'tracker',
     'mongo',
     'underscore',
-    'aldeed:collection2@2.3.2',
-    'matb33:collection-hooks@0.7.9',
-    'cfs:standard-packages@0.5.3',
-    'cfs:gridfs@0.0.2'
+    'aldeed:collection2',
+    'matb33:collection-hooks',
+    'ongoworks:security',
+    'cfs:standard-packages',
+    'dburles:mongo-collection-instances',
+    'cfs:gridfs'
   ]);
   api.use('lai:document-methods');
   api.addFiles([

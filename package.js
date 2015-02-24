@@ -1,6 +1,6 @@
 Package.describe({
   name: 'lai:document-methods',
-  version: '0.1.8',
+  version: '0.1.9',
   // Brief, one-line summary of the package.
   summary: 'Extend your documents with helpful methods.',
   // URL to the Git repository containing the source code for this package.
@@ -18,7 +18,7 @@ Package.onUse(function(api) {
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
     'mongo',
-    'lai:collection-extensions@0.1.0',
+    'lai:collection-extensions@0.1.1',
     'dburles:collection-helpers@1.0.2'
   ]);
 

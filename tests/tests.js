@@ -43,19 +43,23 @@ Tinytest.add("works alongside dburles:mongo-collection-instances", function (tes
 
 Tinytest.add("works alongside ongoworks:security", function (test) {
   Todos = new Mongo.Collection('todos' + test.id);
+  if (Meteor.isServer) {
+    Todos.permit(['insert', 'update', 'remove']).apply();
 
+    insert(Todos);
+    
+    var todo = inst(Todos);
+    todo.$update({
+      $set: {
+        title: 'Pick up more stuff'
+      }
+    });
 
-  insert(Todos);
-
-  var todo = inst(Todos);
-  todo.$update({
-    $set: {
-      title: 'Pick up more stuff'
-    }
-  });
-
-  todo = inst(Todos);
-  test.equal(todo.title, 'Pick up more stuff');
+    todo = inst(Todos);
+    test.equal(todo.title, 'Pick up more stuff');
+  } else {
+    test.equal(Todos.permit, undefined);
+  }
 });
 
 Tinytest.add("works alongside aldeed:collection2", function (test) {

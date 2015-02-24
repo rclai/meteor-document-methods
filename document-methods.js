@@ -1,22 +1,5 @@
-if (typeof Object.create !== 'function') {
-  Object.create = (function () {
-    var Temp = function () {};
-    return function (prototype) {
-      if (arguments.length > 1) {
-        throw Error('Second argument not supported');
-      }
-      if (typeof prototype != 'object') {
-        throw TypeError('Argument must be an object');
-      }
-      Temp.prototype = prototype;
-      var result = new Temp();
-      Temp.prototype = null;
-      return result;
-    };
-  })();
-}
-
-var attachDocumentMethods = function (inst) {
+Meteor.addCollectionExtension(function () {
+  var inst = this;
   if ((!_.isFunction(inst._transform) || inst._hasCollectionHelpers) && _.isFunction(inst.helpers)) {
     inst.helpers({
       $save: function () {
@@ -69,28 +52,4 @@ var attachDocumentMethods = function (inst) {
       }    
     });
   }
-};
-
-var wrapConstructor = function () {
-  var constructor = Mongo.Collection;
-
-  Mongo.Collection = function() {
-    var ret = constructor.apply(this, arguments);
-    attachDocumentMethods(this);
-    return ret;
-  };
-
-  Mongo.Collection.prototype = Object.create(constructor.prototype);
-  Mongo.Collection.prototype.constructor = Mongo.Collection;
-
-  _.extend(Mongo.Collection, constructor);
-
-  // Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
-  Meteor.Collection = Mongo.Collection;
-};
-
-wrapConstructor();
-
-if (typeof Meteor.users !== 'undefined') {
-  attachDocumentMethods(Meteor.users);
-}
+});

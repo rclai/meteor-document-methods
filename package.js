@@ -1,6 +1,6 @@
 Package.describe({
   name: 'lai:document-methods',
-  version: '0.1.4',
+  version: '0.1.8',
   // Brief, one-line summary of the package.
   summary: 'Extend your documents with helpful methods.',
   // URL to the Git repository containing the source code for this package.

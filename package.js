@@ -18,7 +18,7 @@ Package.onUse(function(api) {
     // Hopefully, MDG decides to switch to Lodash.. THEY BETTER!
     'underscore',
     'mongo',
-    'lai:collection-extensions@0.1.1',
+    'lai:collection-extensions@0.1.3',
     'dburles:collection-helpers@1.0.2'
   ]);
 

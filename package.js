@@ -19,7 +19,7 @@ Package.onUse(function(api) {
     'underscore',
     'mongo',
     'lai:collection-extensions@0.1.0',
-    'dburles:collection-helpers@1.0.2'
+    'dburles:collection-helpers@1.0.3'
   ]);
 
   api.addFiles([

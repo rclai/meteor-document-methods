@@ -1,6 +1,6 @@
 Meteor.addCollectionExtension(function () {
   var inst = this;
-  if ((!_.isFunction(inst._transform) || inst._hasCollectionHelpers) && _.isFunction(inst.helpers)) {
+  if ((!_.isFunction(inst._transform) || inst._hasCollectionHelpers || inst._helpers) && _.isFunction(inst.helpers)) {
     inst.helpers({
       $save: function () {
         var doc = {};
